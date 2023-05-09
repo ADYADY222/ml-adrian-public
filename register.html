@@ -1,27 +1,3 @@
-<?php
-
-if(isset($_POST['submit'])) {
-  
-  // Colectam datele din formular
-  $nume_lugar = $_POST['nombre_lugar'];
-  $descriere_lugar = $_POST['descripcion_lugar'];
-  $municipio = $_POST['municipio'];
-  $url_info = $_POST['url_info'];
-  $url_maps = $_POST['url_maps'];
-  $imagine = $_FILES['imagine']['name'];
-  $destinatie_imagine = "imagini/" . rand(1000,9000) . "-" . $imagine; // Generam un nume unic pentru imagine
-  
-  // Mutam imaginea in folderul corespunzator
-  if(move_uploaded_file($_FILES['imagine']['tmp_name'], $destinatie_imagine)) {
-    echo "<script>alert('Imaginea a fost incarcata cu succes!')</script>";
-  } else {
-    echo "<script>alert('Incarcarea imaginii a esuat!')</script>";
-  }
-  
-}
-
-?>
-
 <!DOCTYPE html>
 <!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
@@ -34,7 +10,7 @@ if(isset($_POST['submit'])) {
 <body>
     <a href="index.html"><h1>Descubriendo Gran Canaria</h1></a>
 	<div style="display: flex; justify-content: center;">
-		<a href="register.php"><button>Nuevo Lugar que visitar</button></a>
+		<a href="register.html"><button>Nuevo Lugar que visitar</button></a>
 		<a href="locations.html"><button>Lugares que no me puedo perder</button></a>
 	</div>
   <div class="container">

@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 	<div class="button2">
-        <a href="http://localhost/ml-adrian-public/register.php"><button>Volver a registrarse</button></a>
+        <a href="http://localhost/ml-adrian-public/register.html"><button>Volver a registrarse</button></a>
     </div>
 </body>
 </html>
