@@ -44,11 +44,13 @@ if(isset($_POST['submit'])) {
         <div class="user-details">
           <div class="input-box">
             <span class="details">Nombre del lugar:</span>
-            <input type="text" id="error-message" name="nombre_lugar" maxlength="20" required>
+            <input type="text" id="text3" name="nombre_lugar" maxlength="20" oninput="checkLimit()" required>
+            <span id="error-message-3" style="color: red;"></span>
           </div>
           <div class="input-box">
             <span class="details">Descripcion:</span> 
-            <textarea class="test2 textarea" id="text2" name="descripcion_lugar" rows="5" cols="120" required maxlength="100"></textarea>
+            <textarea class="test2 textarea" id="text2" name="descripcion_lugar" rows="5" cols="120" required maxlength="100" oninput="checkLimit()"></textarea>
+            <span id="error-message-2" style="color: red;"></span>
           </div>
           <div class="input-box">
             <span class="details">Municipio donde se encuentra: </span> 
@@ -75,27 +77,39 @@ if(isset($_POST['submit'])) {
               <option value="Valsequillo de Gran Canaria">Valsequillo de Gran Canaria</option>
               <option value="Vega de San Mateo">Vega de San Mateo</option>
               </select>
-              
-                    </div>
-                    <div class="input-box">
-                      <span class="details">URL con Mas Informacion:</span>
-                      <input type="text" name="url_info" required maxlength="100">
-                    </div>
-                    <div class="input-box">
-                      <span class="details">URL con enlace a Google Maps:</span>
-                      <input type="text" name="url_maps" required maxlength="100">
-                    </div>
-                    <div class="input-box">
-                      <span class="details">Imagne:</span>
-                      <input class="test22" type="file" id="imagine" name="imagine"><br><br>
-                    </div>
-                    <div class="button2">
-                      <input type="submit" value="Enviar" name="submit">
-                    </div>
-                    
-                </form>
-              </div>
-              </div>
-              <script src="script.js"></script>
-              </body>
-              </html>
+
+                </div>
+                <div class="input-box">
+                  <span class="details">URL con Mas Informacion:</span>
+                  <input type="text" name="url_info" required maxlength="100">
+                </div>
+                <div class="input-box">
+                  <span class="details">URL con enlace a Google Maps:</span>
+                  <input type="text" name="url_maps" required maxlength="100">
+                </div>
+                <div class="input-box">
+                  <span class="details">Imagne:</span>
+                  <input class="test22" type="file" id="imagine" name="imagine"><br><br>
+                </div>
+                <div class="button2">
+                  <input type="submit" value="Enviar" name="submit">
+                </div>
+                
+            </form>
+          </div>
+          </div>
+          <script src="script.js"></script>
+          <script>
+            function checkLimit() {
+              const input = document.getElementById("text3");
+              const maxLength = input.getAttribute("maxlength");
+              if (input.value.length >= maxLength) {
+                document.getElementById("error-message-3").textContent = "Limite de 20 caracteres atins!";
+              } else {
+                document.getElementById("error-message-3").textContent = "";
+              }
+            }
+
+          </script>
+          </body>
+          </html>
