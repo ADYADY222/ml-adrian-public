@@ -40,19 +40,19 @@ if(isset($_POST['submit'])) {
   <div class="container">
     <div class="title">Nuevo lugar que visitar</div>
     <div class="content">
-      <form method="post" action="procesare.php">
+      <form method="post" action="procesare.php" enctype="multipart/form-data">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Nombre del lugar:</span>
-            <input type="text" name="nombre_lugar">
+            <input type="text" id="error-message" name="nombre_lugar" maxlength="20" required>
           </div>
           <div class="input-box">
-            <span class="details">Descripcion:</span>
-            <textarea class="test2 textarea" id="text2" name="descripcion_lugar" rows="5" cols="120"></textarea>
+            <span class="details">Descripcion:</span> 
+            <textarea class="test2 textarea" id="text2" name="descripcion_lugar" rows="5" cols="120" required maxlength="100"></textarea>
           </div>
           <div class="input-box">
-            <span class="details">Municipio donde se encuentra:</span>
-            <select class="test4" name="municipio" id="municipio">
+            <span class="details">Municipio donde se encuentra: </span> 
+            <select class="test4" name="municipio" id="municipio" required>
               <option value="Agaete">Agaete</option>
               <option value="Agüimes">Agüimes</option>
               <option value="Artenara">Artenara</option>
@@ -79,15 +79,15 @@ if(isset($_POST['submit'])) {
                     </div>
                     <div class="input-box">
                       <span class="details">URL con Mas Informacion:</span>
-                      <input type="text" name="url_info">
+                      <input type="text" name="url_info" required maxlength="100">
                     </div>
                     <div class="input-box">
                       <span class="details">URL con enlace a Google Maps:</span>
-                      <input type="text" name="url_maps">
+                      <input type="text" name="url_maps" required maxlength="100">
                     </div>
                     <div class="input-box">
                       <span class="details">Imagne:</span>
-                      <input class="test22" id="input-file" type="file" accept="image/*" name="imagine">
+                      <input class="test22" type="file" id="imagine" name="imagine"><br><br>
                     </div>
                     <div class="button2">
                       <input type="submit" value="Enviar" name="submit">
@@ -96,5 +96,6 @@ if(isset($_POST['submit'])) {
                 </form>
               </div>
               </div>
+              <script src="script.js"></script>
               </body>
               </html>
