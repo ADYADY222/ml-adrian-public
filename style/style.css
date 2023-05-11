@@ -78,6 +78,10 @@ button:hover {
     color: black;
   }
 
+  header{
+    text-decoration: none;
+  }
+
   table thead th {
     background-color: #1ca73e;
     color: white;

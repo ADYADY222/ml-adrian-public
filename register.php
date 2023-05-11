@@ -1,3 +1,19 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $file = fopen("nume_fisier.csv", "a");
+  $new_row = array();
+
+  $new_row[] = $_POST["nume_loc"];
+  $new_row[] = $_POST["descriere_loc"];
+  $new_row[] = $_POST["municipiu_loc"];
+  $new_row[] = $_POST["url_info"];
+  $new_row[] = $_POST["url_maps"];
+  $new_row[] = $_POST["url_imagine"];
+
+  fputcsv($file, $new_row);
+  fclose($file);
+}
+?>
 <!DOCTYPE html>
 <!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
@@ -8,7 +24,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
-    <a href="index.html"><h1>Descubriendo Gran Canaria</h1></a>
+    <a href="index.html" style="text-decoration: none;" ><h1>Descubriendo Gran Canaria</h1></a>
 	<div style="display: flex; justify-content: center;">
 		<a href="register.html"><button>Nuevo Lugar que visitar</button></a>
 		<a href="locations.html"><button>Lugares que no me puedo perder</button></a>
