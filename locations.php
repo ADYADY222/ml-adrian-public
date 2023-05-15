@@ -4,12 +4,16 @@ $file = fopen("date.csv", "r"); // deschidem fisierul data.csv in modul de citir
 // initializam array-ul de date
 $data = array();
 
+while(!feof($file)) {
+  $data[] = explode(";",fgets($file));
+}
+
+/*
 // citim fiecare linie din fisier pana ajungem la sfarsitul lui
 while (($row = fgetcsv($file)) !== FALSE) {
     $data[] = $row; // adaugam linia curenta (sub forma unui array) la array-ul de date
 }
-
-print_r($data);
+*/
 
 fclose($file); // inchidem fisierul
 
@@ -52,20 +56,21 @@ fclose($file); // inchidem fisierul
         <?php
         foreach ($data as $row) {
           
-            echo "<td><input type='checkbox' id='" . $row[1] . "' name='" . $row[1] . "' value='" . $row[1] . "'></td>";
+            //echo "<td><input type='checkbox' id='" . $row[1] . "' name='" . $row[1] . "' value='" . $row[1] . "'></td>";
+            echo "<td><input type='checkbox' id='visitado' name='visitado' value='1'></td>";
+            echo "<td>" . $row[0] . "</td>";
             echo "<td>" . $row[1] . "</td>";
-            echo "<td>" . $row[1] . "</td>";
-            echo "<td>" . $row[1] . "</td>";
-            echo "<td><a href='" . $row[4] . "'>Página Oficial de " . $row[1] . "</a></td>";
+            echo "<td>" . $row[2] . "</td>";
+            echo "<td><a href='" . $row[3] . "'>Página Oficial de " . $row[3] . "</a></td>";
             
             if(isset($row[5])) {
-              echo "<td><a href='" . $row[5] . "'><i class='fa-duotone fa-map-location-dot fa-bounce' style=' --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; ' ></i></a></td>";
+              echo "<td><a href='" . $row[4] . "'><i class='fa-duotone fa-map-location-dot fa-bounce' style=' --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; ' ></i></a></td>";
             } else {
               echo "<td></td>";
             }
             
             if(isset($row[6])) {
-              echo "<td><img class='pozica' src='" . $row[6] . "' alt='" . $row[1] . "'></td>";
+              echo "<td><img class='pozica' src='" . $row[5] . "' alt='" . $row[5] . "'></td>";
             } else {
               echo "<td></td>";
             }
