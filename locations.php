@@ -62,7 +62,7 @@ fclose($file);
         foreach ($data as $place) {
           
           echo "<tr>";
-          echo "<td><input type='checkbox' checked='unchecked'></td>";
+          echo "<td><input type='checkbox'></td>";
           echo "<td>$place[0]</td>";
           echo "<td>$place[1]</td>";
           echo "<td>$place[2]</td>";
