@@ -47,7 +47,6 @@ fclose($file);
     <table>
       <thead>
         <tr>
-          <th>Visitado</th>
           <th>Nombre del lugar</th>
           <th>Description</th>
           <th>Municipio</th>
@@ -62,7 +61,6 @@ fclose($file);
         foreach ($data as $place) {
           
           echo "<tr>";
-          echo "<td><input type='checkbox'></td>";
           echo "<td>$place[0]</td>";
           echo "<td>$place[1]</td>";
           echo "<td>$place[2]</td>";
