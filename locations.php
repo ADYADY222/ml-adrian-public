@@ -1,22 +1,27 @@
 <?php
-$file = fopen("date.csv", "r"); // deschidem fisierul data.csv in modul de citire
+// Funcție pentru a verifica dacă o variabilă are informații
+function validateRequired($value) {
+    return !empty($value);
+}
 
-// initializam array-ul de date
+// Funcție pentru a verifica dacă conținutul unei variabile nu depășește o anumită dimensiune
+function validateSize($value, $size) {
+    return strlen($value) <= $size;
+}
+
+// Funcție pentru a verifica dacă o variabilă conține o URL validă
+function validateURL($value) {
+    return preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=_|!:,.;]*[-a-z0-9+&@#\/%=_|]/i", $value);
+}
+
+$file = fopen("date.csv", "r");
 $data = array();
 
-while(!feof($file)) {
-  $data[] = explode(";",fgets($file));
+while (!feof($file)) {
+    $data[] = explode(";", fgets($file));
 }
 
-/*
-// citim fiecare linie din fisier pana ajungem la sfarsitul lui
-while (($row = fgetcsv($file)) !== FALSE) {
-    $data[] = $row; // adaugam linia curenta (sub forma unui array) la array-ul de date
-}
-*/
-
-fclose($file); // inchidem fisierul
-
+fclose($file);
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +31,7 @@ fclose($file); // inchidem fisierul
   <meta charset="UTF-8">
   <link rel="stylesheet" href="style/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -53,28 +58,17 @@ fclose($file); // inchidem fisierul
       </thead>
       
       <tbody>
-        <?php
-        foreach ($data as $row) {
+      <?php
+        foreach ($data as $place) {
           
-            //echo "<td><input type='checkbox' id='" . $row[1] . "' name='" . $row[1] . "' value='" . $row[1] . "'></td>";
-            echo "<td><input type='checkbox' id='visitado' name='visitado' value='1'></td>";
-            echo "<td>" . $row[0] . "</td>";
-            echo "<td>" . $row[1] . "</td>";
-            echo "<td>" . $row[2] . "</td>";
-            echo "<td><a href='" . $row[3] . "'>Página Oficial de " . $row[3] . "</a></td>";
-            
-            if(isset($row[5])) {
-              echo "<td><a href='" . $row[4] . "'><i class='fa-duotone fa-map-location-dot fa-bounce' style=' --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; ' ></i></a></td>";
-            } else {
-              echo "<td></td>";
-            }
-            
-            if(isset($row[6])) {
-              echo "<td><img class='pozica' src='" . $row[5] . "' alt='" . $row[5] . "'></td>";
-            } else {
-              echo "<td></td>";
-            }
-
+          echo "<tr>";
+          echo "<td><input type='checkbox' checked='unchecked'></td>";
+          echo "<td>$place[0]</td>";
+          echo "<td>$place[1]</td>";
+          echo "<td>$place[2]</td>";
+          echo "<td><a href='" . $place[3] . "'>Página Oficial de</a></td>";
+          echo "<td><a href='" . $place[3] . "'><i class='fa-solid fa-location-dot' style=' --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; ' ></i></a></td>";
+          echo "<td><a href='imagini/".$place[5]."'target='_blank'><img src='imagini/".$place[5]."'width='200px'></a></td>";
           echo "</tr>";
         }
         ?>
